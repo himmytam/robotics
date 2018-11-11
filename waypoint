@@ -1,0 +1,29 @@
+import numpy as np
+
+class parameter(object):
+    def __init__(self):
+        self.current_angle = 0
+        self.x = 0
+        self.y = 0
+        
+
+    def rotation(self,wx,wy):
+        dy = wy - self.y
+        dx = wx - self.x
+        new_theta = np.arctan2(dy,dx)
+        turning_theta = new_theta - self.current_angle
+        #print('turning angle is = ',turning_theta*180/np.pi)
+        self.current_angle = new_theta
+        self.y = wy
+        self.x = wx
+        #print(self.x,self.y,self.current_angle*180/np.pi)
+        print('---------------')
+
+x = parameter()
+for j in range(4):
+    x.rotation(j%2,j%2+j)
+    print(j%2,j%2+j) 
+    
+    
+    
+    
